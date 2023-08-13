@@ -8,11 +8,11 @@ namespace RamExpress.Controllers
 
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext _context;
-        public HomeController(ApplicationDbContext db)
-        {
-            _context = db;
-        }
+        //private readonly ApplicationDbContext _context;
+        //public HomeController(ApplicationDbContext db)
+        //{
+        //    _context = db;
+        //}
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
