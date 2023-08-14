@@ -1,9 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RamExpress.Models
 {
     public class Orders
     {
+        [Key]
         public int Id { get; set; }
 
         public int UserId { get; set; }

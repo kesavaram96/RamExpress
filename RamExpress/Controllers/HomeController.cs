@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using RamExpress.Data;
 using RamExpress.Models;
 using System.Diagnostics;
@@ -8,22 +9,25 @@ namespace RamExpress.Controllers
 
     public class HomeController : Controller
     {
-        //private readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         //public HomeController(ApplicationDbContext db)
         //{
         //    _context = db;
         //}
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
+            _context= db;
            // var ins=_context.Products.Where(p=>p.)
             _logger = logger;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var categories = _context.Category.Distinct().ToList();
+    
+            return View(categories);
         }
 
         public IActionResult Privacy()

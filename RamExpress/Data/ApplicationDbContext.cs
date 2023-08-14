@@ -9,15 +9,22 @@ namespace RamExpress.Data
             public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
             
         public DbSet<Product> Products { get; set; }
-        public DbSet<Category> Categoriest{ get; set; }
+        public DbSet<Category> Category{ get; set; }
         public DbSet<Users> Users { get; set; }
         public DbSet<Card> Card { get; set; }
         public DbSet<Orders> Orders { get; set; }
         public DbSet<ReviewRatings> ReviewRatings { get; set; }
         public DbSet<ShippingAddress> ShippingAddresses { get; set; }
-     
 
 
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Category>().HasData(
+        //        new Category { Id = 1, Name = "FootWear", },
+        //        new Category { Id = 2, Name = "Clothes", },
+        //        new Category { Id = 3, Name = "Horror", }
+        //        );
+        //}
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
