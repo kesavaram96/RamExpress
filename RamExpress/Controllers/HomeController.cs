@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using RamExpress.Data;
 using RamExpress.Models;
+using RamExpress.ViewModel;
 using System.Diagnostics;
 
 namespace RamExpress.Controllers
@@ -25,9 +26,17 @@ namespace RamExpress.Controllers
 
         public IActionResult Index()
         {
-            var categories = _context.Category.Distinct().ToList();
+            var homeView = new HomeModel
+            {
+                categories = _context.Category.Distinct().ToList(),
+                products = _context.Products.ToList(),
+
+
+
+            };
+            
     
-            return View(categories);
+            return View(homeView);
         }
 
         public IActionResult Privacy()
