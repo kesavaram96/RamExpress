@@ -25,6 +25,16 @@ namespace RamExpress.Controllers
             var applicationDbContext = _context.Products.Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
         }
+        
+        public async Task<IActionResult> Index(string name)
+        {
+            if(_context.Products==null)
+            {
+                return Problem("Entity set is null.");
+            }
+
+            return View();
+        }
 
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)

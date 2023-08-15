@@ -11,16 +11,13 @@ namespace RamExpress.Controllers
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
-        //public HomeController(ApplicationDbContext db)
-        //{
-        //    _context = db;
-        //}
+    
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger, ApplicationDbContext db)
         {
             _context= db;
-           // var ins=_context.Products.Where(p=>p.)
+         
             _logger = logger;
         }
 
@@ -38,6 +35,7 @@ namespace RamExpress.Controllers
     
             return View(homeView);
         }
+       
 
         public IActionResult Privacy()
         {
