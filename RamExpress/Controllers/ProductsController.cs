@@ -25,10 +25,10 @@ namespace RamExpress.Controllers
             var applicationDbContext = _context.Products.Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
         }
-        
+
         public async Task<IActionResult> Index(string name)
         {
-            if(_context.Products==null)
+            if (_context.Products == null)
             {
                 return Problem("Entity set is null.");
             }
@@ -36,7 +36,7 @@ namespace RamExpress.Controllers
             return View();
         }
 
-        // GET: Products/Details/5
+        //GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Products == null)

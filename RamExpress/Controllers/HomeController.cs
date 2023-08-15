@@ -26,13 +26,11 @@ namespace RamExpress.Controllers
             var homeView = new HomeModel
             {
                 categories = _context.Category.Distinct().ToList(),
-                products = _context.Products.ToList(),
-
-
+                products = _context.Products.ToList()
 
             };
+
             
-    
             return View(homeView);
         }
        
