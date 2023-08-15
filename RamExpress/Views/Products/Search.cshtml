@@ -6,23 +6,27 @@
 
 
 
-            <!--Products-->
+@foreach(var ad in Model)
+{
+    <h2>@ad.ProductName</h2>
+}
+<!--Products-->
 
-<section style="" class="container-fluid">
+@*<section style="" class="container-fluid">
     <div class="text-center container py-5">
         <h4 class="mt-4 mb-5"><strong>Products</strong></h4>
 
         <div class="row">
-        @foreach(var item in Model)
+            @foreach (var item in Model)
             {
-                <div class="col-lg-4 col-md-12 mb-4" >
+                <div class="col-lg-4 col-md-12 mb-4">
                     <div class="card" style="height:610px">
                         <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
                              data-mdb-ripple-color="light" style="align-items:center">
                             <img src="@item.Image"
-                                 class="w-100" style="width:300px; height:350px"/>
+                                 class="w-100" style="width:300px; height:350px" />
                             <a href="#!">
-                    
+
                                 <div class="hover-overlay">
                                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                                 </div>
@@ -42,11 +46,11 @@
                     </div>
                 </div>
             }
-            
 
-       
+
+
         </div>
 
-    
+
     </div>
-</section>
+</section>*@

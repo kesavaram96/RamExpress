@@ -1,4 +1,5 @@
-﻿@model RamExpress.ViewModel.HomeModel
+﻿
+@model RamExpress.ViewModel.HomeModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -35,7 +36,7 @@
                             if(Model.categories[x].Name==cate)
                             {
 
-                                    <li><a class="dropdown-item" href="#">@Model.categories[x].SubCategoryName</a></li>
+                                    <li><a class="dropdown-item" href="#@Model.categories[x].SubCategoryName">@Model.categories[x].SubCategoryName</a></li>
                             }
 
                          }
@@ -82,3 +83,55 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+<br />
+
+
+
+    <!--Products with categories-->
+
+
+ @foreach(var cato in Model.categories)
+{ 
+    <section style="" class="container-fluid " id="@cato.SubCategoryName">
+        <div class="text-center container py-5 bg-secondary">
+            <h4 class="mt-4 mb-5"><strong>@cato.SubCategoryName</strong></h4>
+
+        <div class="row">
+                @foreach (var item in Model.products.Where(m => m.Category.SubCategoryName == cato.SubCategoryName))
+                {
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card" style="height:610px">
+                        <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light"
+                             data-mdb-ripple-color="light" style="align-items:center">
+                            <img src="@item.Image"
+                                 class="w-100" style="width:300px; height:350px" />
+                            <a href="#!">
+
+                                <div class="hover-overlay">
+                                    <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="text-reset">
+                                <h5 class="card-title mb-3">@item.ProductName</h5>
+                            </a>
+                            <a href="" class="text-reset">
+                                <p>@item.Category.SubCategoryName</p>
+                            </a>
+                            <h6 class="mb-3">$@item.Price</h6>
+                            <button class="btn btn-warning ">Add Cart</button>
+                            <button class="btn btn-danger ">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+
+
+    </div>
+</section>
+}

@@ -26,15 +26,14 @@ namespace RamExpress.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        public async Task<IActionResult> Index(string name)
+        [HttpPost]
+        public IActionResult Search(string? name)
         {
-            if (_context.Products == null)
-            {
-                return Problem("Entity set is null.");
-            }
-
-            return View();
+            var applicationDbContext = _context.Products.Select(m=>m.ProductName==name).ToList();
+            return View(applicationDbContext);
+            //return View(await applicationDbContext.ToListAsync());
         }
+
 
         //GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
