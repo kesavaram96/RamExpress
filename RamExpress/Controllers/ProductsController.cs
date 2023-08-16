@@ -26,13 +26,34 @@ namespace RamExpress.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        [HttpPost]
-        public IActionResult Search(string? name)
+
+
+        //public IActionResult Search(string search)
+        //{
+        //    return View();
+        //}
+        [HttpGet]
+        public IActionResult Search(string? search)
         {
-            var applicationDbContext = _context.Products.Select(m=>m.ProductName==name).ToList();
-            return View(applicationDbContext);
-            //return View(await applicationDbContext.ToListAsync());
+
+      
+            var products = from p in _context.Products
+                           select p;
+
+
+
+            if (!String.IsNullOrEmpty(search))
+            {
+                products = products.Where(s => s.ProductName!.Contains(search));
+            }
+
+
+
+            return View(products.ToList());
         }
+           
+            //return View(await applicationDbContext.ToListAsync());
+        
 
 
         //GET: Products/Details/5
